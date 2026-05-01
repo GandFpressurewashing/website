@@ -1,217 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>G & F Pressure Washing</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>G & F Pressure Washing</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      background: #f8fafc;
-      color: #111;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 15px 30px;
-      background: white;
-      border-bottom: 1px solid #ddd;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #0f172a;
+  color: white;
+}
 
-    header img {
-      width: 60px;
-    }
+/* NAV */
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background: rgba(0,0,0,0.6);
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+}
 
-    nav a {
-      margin: 0 10px;
-      text-decoration: none;
-      color: #333;
-      font-weight: 600;
-    }
+nav img {
+  width: 50px;
+}
 
-    .hero {
-      text-align: center;
-      padding: 80px 20px;
-      background: linear-gradient(to right, #0b3d91, #145da0);
-      color: white;
-    }
+/* HERO */
+.hero {
+  height: 100vh;
+  background: url('after1.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
 
-    .hero h1 {
-      font-size: 38px;
-      margin-bottom: 10px;
-    }
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+}
 
-    .btn {
-      background: #ffd700;
-      padding: 12px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      color: black;
-    }
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
 
-    .container {
-      max-width: 1000px;
-      margin: auto;
-      padding: 40px 20px;
-    }
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
 
-    h2 {
-      margin-bottom: 20px;
-    }
+.hero p {
+  color: #ddd;
+}
 
-    .services {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
+.btn {
+  background: #22c55e;
+  padding: 14px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  display: inline-block;
+}
 
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      flex: 1;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
+/* SECTION */
+.section {
+  padding: 70px 20px;
+  max-width: 1100px;
+  margin: auto;
+}
 
-    /* SLIDER */
-    .ba-slider {
-      position: relative;
-      max-width: 500px;
-      margin: 30px auto;
-      overflow: hidden;
-      border-radius: 10px;
-    }
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
 
-    .ba-slider img {
-      width: 100%;
-    }
+.section p {
+  text-align: center;
+  color: #cbd5f5;
+}
 
-    .resize {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 50%;
-      overflow: hidden;
-    }
+/* SLIDER */
+.slider {
+  position: relative;
+  max-width: 600px;
+  margin: 50px auto;
+  border-radius: 12px;
+  overflow: hidden;
+}
 
-    .handle {
-      position: absolute;
-      left: 50%;
-      top: 0;
-      height: 100%;
-      width: 3px;
-      background: #ffd700;
-    }
+.slider img {
+  width: 100%;
+  display: block;
+}
 
-    .about {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-    }
+.after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  overflow: hidden;
+}
 
-    .contact {
-      text-align: center;
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-    }
+.handle {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background: #22c55e;
+  cursor: ew-resize;
+}
 
-    footer {
-      text-align: center;
-      padding: 15px;
-      background: #0b3d91;
-      color: white;
-    }
-  </style>
+/* CARDS */
+.cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1;
+  background: #1e293b;
+  padding: 25px;
+  border-radius: 10px;
+}
+
+/* CONTACT */
+.contact {
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #020617;
+  color: #aaa;
+}
+</style>
 </head>
 
 <body>
 
-<header>
+<nav>
   <img src="logo.png">
-  <nav>
-    <a href="#services">Services</a>
-    <a href="#results">Results</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+</nav>
 
 <section class="hero">
-  <h1>G & F Pressure Washing</h1>
-  <p>Professional Exterior Cleaning in San Antonio</p>
-  <br>
-  <a href="#contact" class="btn">Get a Free Quote</a>
+  <div class="hero-content">
+    <h1>Make Your Property Look Brand New</h1>
+    <p>Professional Pressure Washing in San Antonio</p>
+    <br>
+    <a href="sms:2109311240" class="btn">Text Us Now</a>
+  </div>
 </section>
 
-<div class="container" id="services">
+<div class="section">
+  <h2>Real Transformations</h2>
+
+  <!-- SLIDER 1 -->
+  <div class="slider">
+    <img src="before1.jpg">
+    <div class="after">
+      <img src="after1.jpg">
+    </div>
+    <div class="handle"></div>
+  </div>
+
+  <!-- SLIDER 2 -->
+  <div class="slider">
+    <img src="before2.jpg">
+    <div class="after">
+      <img src="after2.jpg">
+    </div>
+    <div class="handle"></div>
+  </div>
+
+</div>
+
+<div class="section">
   <h2>Services</h2>
-  <div class="services">
+  <div class="cards">
     <div class="card">
       <h3>Driveways</h3>
-      <p>Deep cleaning to remove stains and dirt.</p>
+      <p>Remove dirt, stains, and buildup.</p>
     </div>
     <div class="card">
       <h3>Houses</h3>
-      <p>Safe exterior washing that restores your home.</p>
+      <p>Safe exterior cleaning.</p>
     </div>
     <div class="card">
       <h3>Patios</h3>
-      <p>Make outdoor spaces look brand new again.</p>
+      <p>Restore your outdoor space.</p>
     </div>
   </div>
 </div>
 
-<div class="container" id="results">
-  <h2>Before & After</h2>
-
-  <div class="ba-slider">
-    <img src="before1.jpg">
-    <div class="resize">
-      <img src="after1.jpg">
-    </div>
-    <span class="handle"></span>
-  </div>
-
+<div class="section">
+  <h2>Why Choose Us</h2>
+  <p>
+    We are two hardworking high school students based in San Antonio focused on delivering high-quality results at affordable prices.
+  </p>
 </div>
 
-<div class="container" id="about">
-  <h2>About Us</h2>
-  <div class="about">
-    <p>We are two hardworking high school students based in San Antonio.</p>
-    <p>We started G & F Pressure Washing to provide quality service and build real business experience.</p>
+<!-- INSTAGRAM SECTION -->
+<div class="section">
+  <h2>See More of Our Work</h2>
+  <p>Check out our latest transformations on Instagram</p>
+
+  <div style="text-align:center; margin-top:20px;">
+    <a href="https://www.instagram.com/gandf_pressurewashing" target="_blank" class="btn">
+      View Our Instagram
+    </a>
   </div>
 </div>
 
-<div class="container" id="contact">
-  <div class="contact">
-    <h2>Contact</h2>
-    <a href="tel:2109311240" class="btn">Call Now</a>
-    <br><br>
-    <a href="sms:2109311240" class="btn">Text Us</a>
-  </div>
+<div class="section contact">
+  <h2>Get a Free Quote</h2>
+  <a href="tel:2109311240" class="btn">Call</a>
+  <br><br>
+  <a href="sms:2109311240" class="btn">Text</a>
 </div>
 
 <footer>
-  <p>© 2026 G & F Pressure Washing</p>
+  <p>G & F Pressure Washing | San Antonio</p>
 </footer>
 
 <script>
-document.querySelectorAll('.ba-slider').forEach(slider => {
-  let handle = slider.querySelector('.handle');
-  let resize = slider.querySelector('.resize');
+document.querySelectorAll('.slider').forEach(slider => {
+  const after = slider.querySelector('.after');
+  const handle = slider.querySelector('.handle');
+
+  function move(x) {
+    const rect = slider.getBoundingClientRect();
+    let percent = (x - rect.left) / rect.width * 100;
+    percent = Math.max(0, Math.min(100, percent));
+    after.style.width = percent + "%";
+    handle.style.left = percent + "%";
+  }
+
+  slider.addEventListener('mousemove', e => {
+    if (e.buttons === 1) move(e.clientX);
+  });
 
   slider.addEventListener('touchmove', e => {
-    let rect = slider.getBoundingClientRect();
-    let x = e.touches[0].clientX - rect.left;
-    let percent = (x / rect.width) * 100;
-    resize.style.width = percent + "%";
-    handle.style.left = percent + "%";
+    move(e.touches[0].clientX);
   });
 });
 </script>
