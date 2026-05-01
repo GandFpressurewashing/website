@@ -7,59 +7,61 @@
 
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      background-color: #f4f9ff;
+      font-family: 'Arial', sans-serif;
+      background: #f8fafc;
+      color: #111;
     }
 
     header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 30px;
       background: white;
-      text-align: center;
-      padding: 15px;
-      border-bottom: 3px solid #0b3d91;
+      border-bottom: 1px solid #ddd;
     }
 
     header img {
-      width: 100px;
-    }
-
-    nav {
-      background: #145da0;
-      text-align: center;
-      padding: 10px;
+      width: 60px;
     }
 
     nav a {
-      color: white;
-      margin: 10px;
+      margin: 0 10px;
       text-decoration: none;
-      font-weight: bold;
+      color: #333;
+      font-weight: 600;
     }
 
     .hero {
-      background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') center/cover;
-      color: white;
       text-align: center;
       padding: 80px 20px;
+      background: linear-gradient(to right, #0b3d91, #145da0);
+      color: white;
+    }
+
+    .hero h1 {
+      font-size: 38px;
+      margin-bottom: 10px;
     }
 
     .btn {
       background: #ffd700;
-      color: black;
       padding: 12px 20px;
+      border-radius: 5px;
       text-decoration: none;
       font-weight: bold;
-      border-radius: 5px;
+      color: black;
     }
 
     .container {
-      padding: 30px 20px;
       max-width: 1000px;
       margin: auto;
+      padding: 40px 20px;
     }
 
     h2 {
-      color: #0b3d91;
+      margin-bottom: 20px;
     }
 
     .services {
@@ -68,33 +70,25 @@
       flex-wrap: wrap;
     }
 
-    .box {
+    .card {
       background: white;
-      padding: 15px;
+      padding: 20px;
       border-radius: 10px;
       flex: 1;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
-    .about {
-      background: white;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-
-    /* BEFORE AFTER SLIDER */
+    /* SLIDER */
     .ba-slider {
       position: relative;
-      overflow: hidden;
       max-width: 500px;
       margin: 30px auto;
+      overflow: hidden;
       border-radius: 10px;
     }
 
     .ba-slider img {
       width: 100%;
-      display: block;
     }
 
     .resize {
@@ -107,26 +101,31 @@
 
     .handle {
       position: absolute;
-      top: 0;
       left: 50%;
-      width: 4px;
+      top: 0;
       height: 100%;
+      width: 3px;
       background: #ffd700;
-      cursor: ew-resize;
     }
 
-    .contact {
-      text-align: center;
+    .about {
       background: white;
       padding: 20px;
       border-radius: 10px;
     }
 
+    .contact {
+      text-align: center;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+    }
+
     footer {
+      text-align: center;
+      padding: 15px;
       background: #0b3d91;
       color: white;
-      text-align: center;
-      padding: 10px;
     }
   </style>
 </head>
@@ -135,44 +134,41 @@
 
 <header>
   <img src="logo.png">
-  <h1>G & F Pressure Washing</h1>
-  <p>Serving San Antonio, Texas</p>
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#results">Results</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
 </header>
 
-<nav>
-  <a href="#services">Services</a>
-  <a href="#results">Results</a>
-  <a href="#about">About</a>
-  <a href="#contact">Contact</a>
-</nav>
-
 <section class="hero">
-  <h1>Make Your Property Look Brand New</h1>
-  <p>Driveways • Homes • Sidewalks • Patios</p>
+  <h1>G & F Pressure Washing</h1>
+  <p>Professional Exterior Cleaning in San Antonio</p>
   <br>
   <a href="#contact" class="btn">Get a Free Quote</a>
 </section>
 
 <div class="container" id="services">
-  <h2>Our Services</h2>
+  <h2>Services</h2>
   <div class="services">
-    <div class="box">
-      <h3>Driveway Cleaning</h3>
-      <p>Remove dirt, stains, and buildup.</p>
+    <div class="card">
+      <h3>Driveways</h3>
+      <p>Deep cleaning to remove stains and dirt.</p>
     </div>
-    <div class="box">
-      <h3>House Washing</h3>
-      <p>Safely clean your home's exterior.</p>
+    <div class="card">
+      <h3>Houses</h3>
+      <p>Safe exterior washing that restores your home.</p>
     </div>
-    <div class="box">
-      <h3>Patios & Sidewalks</h3>
-      <p>Restore outdoor spaces to like-new condition.</p>
+    <div class="card">
+      <h3>Patios</h3>
+      <p>Make outdoor spaces look brand new again.</p>
     </div>
   </div>
 </div>
 
 <div class="container" id="results">
-  <h2>Before & After Results</h2>
+  <h2>Before & After</h2>
 
   <div class="ba-slider">
     <img src="before1.jpg">
@@ -182,41 +178,22 @@
     <span class="handle"></span>
   </div>
 
-  <div class="ba-slider">
-    <img src="before2.jpg">
-    <div class="resize">
-      <img src="after2.jpg">
-    </div>
-    <span class="handle"></span>
-  </div>
-
 </div>
 
 <div class="container" id="about">
   <h2>About Us</h2>
   <div class="about">
-    <p>
-      We are Gregory Buchek and Fernando Rodriguez, two hardworking high school students based in San Antonio.
-    </p>
-    <p>
-      We started G & F Pressure Washing to provide high-quality, affordable cleaning services while building real business experience.
-    </p>
-    <p>
-      We take pride in our work, show up on time, and make sure every job is done right.
-    </p>
+    <p>We are two hardworking high school students based in San Antonio.</p>
+    <p>We started G & F Pressure Washing to provide quality service and build real business experience.</p>
   </div>
 </div>
 
 <div class="container" id="contact">
   <div class="contact">
-    <h2>Contact Us</h2>
-    <p>Call or text for a free quote</p>
-
-    <a href="tel:2109311240" class="btn">📞 Call Now</a>
+    <h2>Contact</h2>
+    <a href="tel:2109311240" class="btn">Call Now</a>
     <br><br>
-    <a href="sms:2109311240" class="btn">💬 Text Us</a>
-
-    <p><strong>Phone:</strong> 210-931-1240</p>
+    <a href="sms:2109311240" class="btn">Text Us</a>
   </div>
 </div>
 
@@ -226,28 +203,13 @@
 
 <script>
 document.querySelectorAll('.ba-slider').forEach(slider => {
-  let isDragging = false;
-  const handle = slider.querySelector('.handle');
-  const resize = slider.querySelector('.resize');
+  let handle = slider.querySelector('.handle');
+  let resize = slider.querySelector('.resize');
 
-  handle.addEventListener('mousedown', () => isDragging = true);
-  window.addEventListener('mouseup', () => isDragging = false);
-
-  slider.addEventListener('mousemove', (e) => {
-    if (!isDragging) return;
-    let rect = slider.getBoundingClientRect();
-    let x = e.clientX - rect.left;
-    let percent = (x / rect.width) * 100;
-    percent = Math.max(0, Math.min(100, percent));
-    resize.style.width = percent + "%";
-    handle.style.left = percent + "%";
-  });
-
-  slider.addEventListener('touchmove', (e) => {
+  slider.addEventListener('touchmove', e => {
     let rect = slider.getBoundingClientRect();
     let x = e.touches[0].clientX - rect.left;
     let percent = (x / rect.width) * 100;
-    percent = Math.max(0, Math.min(100, percent));
     resize.style.width = percent + "%";
     handle.style.left = percent + "%";
   });
