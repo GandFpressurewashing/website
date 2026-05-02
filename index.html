@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="G and F Pressure Washing offers driveway cleaning, house washing, patio cleaning, and trash can cleaning in San Antonio.">
+<title>G and F Pressure Washing | San Antonio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+html{scroll-behavior:smooth;}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:#f8fbff;
+  color:#111;
+  line-height:1.5;
+}
+
+img{max-width:100%;display:block;}
+
+/* NAV */
+nav{
+  position:sticky;
+  top:0;
+  z-index:10;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  padding:18px 40px;
+  background:white;
+  border-bottom:1px solid #e0f2fe;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo img{
+  height:45px;
+  width:45px;
+  object-fit:cover;
+  border-radius:8px;
+}
+
+.nav-links{
+  display:flex;
+  gap:18px;
+  font-size:14px;
+  font-weight:700;
+}
+
+.nav-links a{
+  color:#334155;
+  text-decoration:none;
+}
+
+.nav-links a:hover{color:#0284c7;}
+
+/* HERO */
+.hero{
+  text-align:center;
+  padding:90px 20px;
+  background:linear-gradient(#fff,#e0f2fe);
+}
+
+.hero h1{
+  font-size:50px;
+  font-weight:800;
+  line-height:1.08;
+}
+
+.hero p{
+  margin-top:10px;
+  color:#555;
+  font-size:18px;
+}
+
+.btn{
+  margin-top:20px;
+  padding:14px 26px;
+  background:#0284c7;
+  color:white;
+  border-radius:10px;
+  text-decoration:none;
+  display:inline-block;
+  font-weight:700;
+  transition:background .2s,transform .2s;
+}
+
+.btn:hover{
+  background:#0369a1;
+  transform:translateY(-1px);
+}
+
+.btn.light{
+  background:white;
+  color:#0284c7;
+}
+
+/* SECTION */
+.section{
+  padding:70px 20px;
+  max-width:1100px;
+  margin:auto;
+}
+
+h2{
+  text-align:center;
+  margin-bottom:30px;
+  font-size:32px;
+}
+
+/* SLIDER */
+.slider-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:28px;
+  align-items:start;
+}
+
+.slider{
+  position:relative;
+  width:100%;
+  aspect-ratio:1/1;
+  height:auto;
+  overflow:hidden;
+  border-radius:18px;
+  margin:0;
+  background:#e0f2fe;
+  box-shadow:0 8px 24px rgba(15,23,42,0.08);
+  --before-position:center top;
+  --after-position:center top;
+  --before-scale:1;
+  --after-scale:1;
+  --before-x:0px;
+  --before-y:0px;
+  --after-x:0px;
+  --after-y:0px;
+}
+
+.slider img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transform-origin:center center;
+}
+
+.after-img{
+  object-position:var(--after-position);
+  transform:translate(var(--after-x),var(--after-y)) scale(var(--after-scale));
+}
+
+.before{
+  position:absolute;
+  inset:0;
+  width:50%;
+  overflow:hidden;
+}
+
+.before img{
+  max-width:none;
+  width:var(--slider-width,100%);
+  height:100%;
+  object-position:var(--before-position);
+  transform:translate(var(--before-x),var(--before-y)) scale(var(--before-scale));
+}
+
+.slider-swing{
+  --before-position:center 44%;
+  --after-position:center 0%;
+  --before-scale:1.16;
+  --after-scale:1.08;
+  --after-y:0px;
+}
+
+.slider-walkway{
+  --before-position:center 0%;
+  --after-position:center top;
+  --before-scale:1.32;
+  --after-scale:1.13;
+}
+
+.handle{
+  position:absolute;
+  left:50%;
+  top:0;
+  width:4px;
+  height:100%;
+  background:#38bdf8;
+  transform:translateX(-2px);
+  pointer-events:none;
+}
+
+.handle::after{
+  content:"⇆";
+  position:absolute;
+  top:50%;
+  left:-18px;
+  background:#38bdf8;
+  color:white;
+  border-radius:50%;
+  padding:8px;
+  transform:translateY(-50%);
+}
+
+.slider input{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  opacity:0;
+  cursor:ew-resize;
+}
+
+.slider-label{
+  position:absolute;
+  top:14px;
+  z-index:2;
+  padding:6px 10px;
+  background:rgba(17,17,17,0.72);
+  color:white;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:800;
+}
+
+.slider-label.before-label{left:14px;}
+.slider-label.after-label{right:14px;}
+
+/* SERVICES */
+.services{
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+}
+
+.service{
+  flex:1;
+  min-width:250px;
+  background:white;
+  padding:22px;
+  border-radius:14px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.05);
+}
+
+.service h3{
+  margin-bottom:10px;
+}
+
+.service p{
+  color:#555;
+}
+
+/* ABOUT */
+.about{
+  background:white;
+  padding:30px;
+  border-radius:14px;
+  text-align:center;
+  line-height:1.6;
+  box-shadow:0 5px 15px rgba(0,0,0,0.04);
+}
+
+/* INSTAGRAM */
+.insta{
+  text-align:center;
+}
+
+.insta a{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:#0284c7;
+  color:white;
+  padding:12px 20px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:700;
+}
+
+.insta img{
+  width:20px;
+  height:20px;
+}
+
+/* CONTACT */
+.contact{
+  text-align:center;
+  background:#111;
+  color:white;
+  padding:60px 20px;
+}
+
+.contact h2{margin-bottom:5px;}
+
+.buttons{
+  margin-top:20px;
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:20px;
+  color:#777;
+}
+
+@media(max-width:700px){
+  nav{
+    padding:16px 20px;
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .nav-links{
+    width:100%;
+    justify-content:space-between;
+  }
+
+  .hero{
+    padding:70px 18px;
+  }
+
+  .hero h1{
+    font-size:38px;
+  }
+
+  .slider{
+    width:100%;
+    border-radius:14px;
+  }
+
+  .slider-grid{
+    grid-template-columns:1fr;
+  }
+
+  .buttons .btn,
+  .hero .btn{
+    width:100%;
+    max-width:320px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <img src="logo.png" alt="G and F Pressure Washing logo">
+    <strong>G and F</strong>
+  </div>
+  <div class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>G and F Pressure Washing</h1>
+  <p>Professional exterior cleaning in San Antonio</p>
+  <a href="sms:2109311240" class="btn">Get a Free Quote</a>
+</div>
+
+<!-- SLIDERS -->
+<div class="section" id="work">
+  <h2>Our Work</h2>
+
+  <div class="slider-grid">
+    <div class="slider slider-swing">
+      <img class="after-img" src="after1.jpg" alt="After pressure washing project one">
+      <div class="before"><img src="before1.jpg" alt="Before pressure washing project one"></div>
+      <span class="slider-label before-label">Before</span>
+      <span class="slider-label after-label">After</span>
+      <div class="handle"></div>
+      <input type="range" min="0" max="100" value="50" aria-label="Compare before and after project one">
+    </div>
+
+    <div class="slider slider-walkway">
+      <img class="after-img" src="after2.jpg" alt="After pressure washing project two">
+      <div class="before"><img src="before2.jpg" alt="Before pressure washing project two"></div>
+      <span class="slider-label before-label">Before</span>
+      <span class="slider-label after-label">After</span>
+      <div class="handle"></div>
+      <input type="range" min="0" max="100" value="50" aria-label="Compare before and after project two">
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div class="section" id="services">
+  <h2>Our Services</h2>
+
+  <div class="services">
+
+    <div class="service">
+      <h3>Driveway Cleaning</h3>
+      <p>We remove oil stains, dirt, and years of buildup to restore your driveway and boost curb appeal.</p>
+    </div>
+
+    <div class="service">
+      <h3>House Washing</h3>
+      <p>Our soft washing process safely cleans siding, removing mold, mildew, and grime without damage.</p>
+    </div>
+
+    <div class="service">
+      <h3>Patio Cleaning</h3>
+      <p>We deep clean patios and outdoor spaces so they look brand new and ready to use again.</p>
+    </div>
+
+    <div class="service">
+      <h3>Trash Can Cleaning</h3>
+      <p>We eliminate odors, bacteria, and buildup, leaving your trash cans clean and sanitary.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="section" id="about">
+  <h2>About Us</h2>
+  <div class="about">
+    We are Gregory and Fernando, two students from Clark High School in San Antonio.
+    We started G and F Pressure Washing to provide high-quality work while building something of our own.
+  </div>
+</div>
+
+<!-- INSTAGRAM -->
+<div class="section insta">
+  <h2>Follow Our Work</h2>
+  <a href="https://www.instagram.com/gandf_pressurewashing" target="_blank" rel="noopener noreferrer">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="">
+    Instagram
+  </a>
+</div>
+
+<!-- CONTACT -->
+<div class="contact" id="contact">
+  <h2>Get a Free Quote</h2>
+  <p>Call or text us today</p>
+  <div class="buttons">
+    <a href="tel:2109311240" class="btn">Call</a>
+    <a href="sms:2109311240" class="btn">Text</a>
+  </div>
+</div>
+
+<footer>
+  G and F Pressure Washing | San Antonio | 210-931-1240
+</footer>
+
+<script>
+document.querySelectorAll(".slider").forEach(slider=>{
+  const handle=slider.querySelector(".handle");
+  const before=slider.querySelector(".before");
+  const input=slider.querySelector("input");
+
+  function update(percent){
+    percent=Math.max(0,Math.min(100,percent));
+    handle.style.left=percent+"%";
+    before.style.width=percent+"%";
+    input.value=percent;
+  }
+
+  function move(x){
+    const rect=slider.getBoundingClientRect();
+    update((x-rect.left)/rect.width*100);
+  }
+
+  function setSliderWidth(){
+    slider.style.setProperty("--slider-width",slider.offsetWidth+"px");
+  }
+
+  input.addEventListener("input",()=>update(input.value));
+  slider.addEventListener("mousemove",e=>move(e.clientX));
+  slider.addEventListener("touchmove",e=>move(e.touches[0].clientX),{passive:true});
+  window.addEventListener("resize",setSliderWidth);
+
+  setSliderWidth();
+  update(50);
+});
+</script>
+
+</body>
+</html>
