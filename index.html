@@ -69,7 +69,7 @@ nav a {
 }
 
 .hero h1 {
-  font-size: 60px;
+  font-size: 55px;
   font-weight: 800;
 }
 
@@ -109,34 +109,51 @@ h2 {
   font-size: 32px;
 }
 
-/* WORK GRID */
-.grid {
-  display: grid;
-  gap: 30px;
+/* SLIDER */
+.slider-container {
+  margin: 50px auto;
+  max-width: 700px;
 }
 
-.card {
-  background: white;
-  border-radius: 16px;
+.slider {
+  position: relative;
   overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  border-radius: 16px;
 }
 
-.images {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-.images img {
+.slider img {
   width: 100%;
-  height: 250px;
-  object-fit: cover;
+  display: block;
 }
 
-.label {
-  text-align: center;
-  padding: 10px;
-  font-weight: 600;
+.after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  overflow: hidden;
+}
+
+.slider-handle {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 4px;
+  height: 100%;
+  background: #38bdf8;
+  cursor: ew-resize;
+}
+
+.slider-handle::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -10px;
+  width: 24px;
+  height: 24px;
+  background: #38bdf8;
+  border-radius: 50%;
+  transform: translateY(-50%);
 }
 
 /* ABOUT */
@@ -168,11 +185,6 @@ h2 {
 
 .service:hover {
   transform: translateY(-6px);
-}
-
-/* INSTAGRAM */
-.instagram {
-  text-align: center;
 }
 
 /* CONTACT */
@@ -229,25 +241,24 @@ footer {
 <div class="section" id="work">
   <h2>Our Work</h2>
 
-  <div class="grid">
-
-    <div class="card">
-      <div class="images">
-        <img src="before1.jpg">
-        <img src="after1.jpg">
-      </div>
-      <div class="label">Before / After</div>
+  <!-- SLIDER 1 -->
+  <div class="slider-container">
+    <div class="slider">
+      <img src="before1.jpg" class="before">
+      <img src="after1.jpg" class="after">
+      <div class="slider-handle"></div>
     </div>
-
-    <div class="card">
-      <div class="images">
-        <img src="before2.jpg">
-        <img src="after2.jpg">
-      </div>
-      <div class="label">Before / After</div>
-    </div>
-
   </div>
+
+  <!-- SLIDER 2 -->
+  <div class="slider-container">
+    <div class="slider">
+      <img src="before2.jpg" class="before">
+      <img src="after2.jpg" class="after">
+      <div class="slider-handle"></div>
+    </div>
+  </div>
+
 </div>
 
 <div class="section" id="about">
@@ -283,11 +294,13 @@ footer {
   </div>
 </div>
 
-<div class="section instagram">
+<div class="section">
   <h2>Follow Our Work</h2>
-  <a href="https://www.instagram.com/gandf_pressurewashing" target="_blank" class="btn">
-    View Instagram
-  </a>
+  <div style="text-align:center;">
+    <a href="https://www.instagram.com/gandf_pressurewashing" target="_blank" class="btn">
+      View Instagram
+    </a>
+  </div>
 </div>
 
 <div class="contact" id="contact">
@@ -302,6 +315,48 @@ footer {
 <footer>
   G and F Pressure Washing | San Antonio
 </footer>
+
+<!-- SLIDER SCRIPT -->
+<script>
+document.querySelectorAll('.slider').forEach(slider => {
+  const handle = slider.querySelector('.slider-handle');
+  const after = slider.querySelector('.after');
+
+  let isDown = false;
+
+  handle.addEventListener('mousedown', () => isDown = true);
+  window.addEventListener('mouseup', () => isDown = false);
+
+  window.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+
+    let rect = slider.getBoundingClientRect();
+    let x = e.clientX - rect.left;
+    let percent = (x / rect.width) * 100;
+
+    percent = Math.max(0, Math.min(100, percent));
+
+    handle.style.left = percent + "%";
+    after.style.width = percent + "%";
+  });
+
+  handle.addEventListener('touchstart', () => isDown = true);
+  window.addEventListener('touchend', () => isDown = false);
+
+  window.addEventListener('touchmove', (e) => {
+    if (!isDown) return;
+
+    let rect = slider.getBoundingClientRect();
+    let x = e.touches[0].clientX - rect.left;
+    let percent = (x / rect.width) * 100;
+
+    percent = Math.max(0, Math.min(100, percent));
+
+    handle.style.left = percent + "%";
+    after.style.width = percent + "%";
+  });
+});
+</script>
 
 </body>
 </html>
